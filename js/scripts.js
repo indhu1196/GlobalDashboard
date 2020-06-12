@@ -1,5 +1,5 @@
 $(function () {
-    var dates = [], totCases = [], canAdd, countries = [];
+    var dates = [], totCases = [], canAdd, countries = [], alldata;
     var IND = [];
     var tt= [], statesDate = [], allIndiaData = [], arr = ["Confirmed","Recovered"];
     var casedesc;
@@ -10,15 +10,21 @@ $(function () {
         'dataType': 'json',
         'url': 'ALLCountriescovid-data.json',
         'success': function(data) {
-            canAdd = data.ABW;            
+            $.each(data, function(index, value){
+                res = data[index][0].location
+                countries.push(res);
+            });
+            console.log(countries);
+            
+            alldata = data;
+            canAdd = data.IND;            
             var res = canAdd;
-            countries.push(res[0].location)
+            
             res.forEach(function(key, value) {
                 dates.push(key["date"]);
                 totCases.push(parseInt(key["total_cases"]));
             });
                 console.log(data);
-            // console.log(an);
             if(screen.width <= 767) {
                 stepValue = { step: 10};
             } else {
@@ -27,7 +33,12 @@ $(function () {
         }
     
     });
-
+    var selectSpecCountry = _.filter(alldata, function(obj){
+        // console.log("obj", obj);
+        return obj[0]["location"] === "Aruba"
+    })
+    // console.log("alldata", alldata);
+    console.log("selectSpecCountry", selectSpecCountry[0]);
 
     var chart2 = new Highcharts.Chart({
         chart: {
