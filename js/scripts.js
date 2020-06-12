@@ -1,5 +1,6 @@
+
 $(function () {
-    var dates = [], totCases = [], canAdd, countries = [], alldata;
+    var dates = [], totCases = [], canAdd, countries = [], alldata, countrycode = {};
     var IND = [];
     var tt= [], statesDate = [], allIndiaData = [], arr = ["Confirmed","Recovered"];
     var casedesc;
@@ -33,12 +34,47 @@ $(function () {
         }
     
     });
+
     var selectSpecCountry = _.filter(alldata, function(obj){
         // console.log("obj", obj);
         return obj[0]["location"] === "Aruba"
     })
-    // console.log("alldata", alldata);
-    console.log("selectSpecCountry", selectSpecCountry[0]);
+
+
+    for (var item in alldata) {
+
+        // console.log("item", item);
+
+        // console.log("itemdata", alldata[item][0]["location"])
+
+        countrycode[alldata[item][0]["location"]] = item
+        
+      }
+
+    // // console.log("alldata", alldata);
+    // console.log("selectSpecCountry", selectSpecCountry[0]);
+    // console.log("countrycode", countrycode["Aruba"]);
+    // console.log("countries", countries);
+
+    //create the dropdown from data
+    var select = d3.select("#selectData")
+
+    select.selectAll('option')
+            .data(countries).enter()
+            .append('option')
+            .attr("value", function (d) { 
+                    return countrycode[d]; 
+                })
+            .attr("selected", function (d) { 
+                    if(d === "India"){
+                        return "selected"
+                    }
+                    
+            })
+            .text(function(d){
+                // console.log(d);
+                return d
+            })
 
     var chart2 = new Highcharts.Chart({
         chart: {
