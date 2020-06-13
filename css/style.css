@@ -204,3 +204,12 @@ box-sizing: border-box;
 .total-test .number sup{
     color: grey;
 }
+
+@media screen  and (max-width: 767px) {
+
+
+.global-wrap {
+    grid-template-columns: 100%;
+}
+
+}
