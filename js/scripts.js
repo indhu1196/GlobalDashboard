@@ -1,7 +1,8 @@
 
 $(function () {
-    var dates = [], totCases = [], canAdd, countries = [], alldata, i, countrycode = {}, deaths =[], popltn = [];
-    var totArr = [], noofbeds = [];
+    var dates = [], totCases = [],  countries = [], alldata, i, countrycode = {}, deaths =[], popltn = [];
+    var totArr = [], noofbeds = [], handwash = [], sixtyold = [], seventyold = [], maleSmoker = [], femaleSmoker = [], capita = [], 
+    stringInd = [], diabetesPre = [], totTest = [];
     $.ajax ({
         'async': false,
         'global': false,
@@ -25,10 +26,32 @@ $(function () {
                 deaths.push(parseInt(key["total_deaths"]));
                 noofbeds.push(parseInt(key["hospital_beds_per_100k"]));
                 popltn.push(parseInt(key["population"]));
+                sixtyold.push(parseInt(key["aged_65_older"]));
+                seventyold.push(parseInt(key["aged_70_older"]));
+                handwash.push(parseInt(key["handwashing_facilities"]));
+                maleSmoker.push(parseInt(key["male_smokers"]));
+                femaleSmoker.push(parseInt(key["female_smokers"]));
+                capita.push(parseInt(key["gdp_per_capita"]));
+                stringInd.push(parseInt(key["stringency_index"]));
+                diabetesPre.push(parseInt(key["diabetes_prevalence"]));
+                totTest.push(parseInt(key["total_tests"]));
             });
            
-            console.log(data);
-
+            // console.log(data);
+            $("#deaths").text(deaths[deaths.length - 1]);
+            $("#nobeds").text(noofbeds[noofbeds.length - 1]);
+            $("#popltn").text(popltn[popltn.length - 1]);
+            $("#sixtyold").text(sixtyold[sixtyold.length - 1]);
+            $("#seventyold").text(seventyold[seventyold.length - 1])
+            $("#handwash").text(handwash[handwash.length - 1]);
+            $("#maleSmoker").text(maleSmoker[maleSmoker.length - 1]);
+            $("#femaleSmoker").text(femaleSmoker[femaleSmoker.length - 1]);
+            $("#total-cases").text(totCases[totCases.length - 1]);
+            $("#capita").text(capita[capita.length - 1]);
+            $("#string").text(stringInd[stringInd.length - 1]);
+            $("#diabetes").text(diabetesPre[diabetesPre.length - 1]);
+            $("#total-tests").text(totTest[totTest.length - 1]);
+            $("#seldate").text(dates[dates.length - 1])
             if(screen.width <= 767) {
                 stepValue = { step: 10};
             } else {
@@ -87,10 +110,20 @@ $(function () {
                     events: {
                         click: function() {
                             // alert('Category: ' + this.category + ', value: ' + this.y);
-                            console.log(popltn[dates.indexOf(this.category)])
-                            $("p#deaths").text(deaths[dates.indexOf(this.category)]);
-                            $("p#nobeds").text(noofbeds[dates.indexOf(this.category)]);
-                            $("p#popltn").text(popltn[dates.indexOf(this.category)]);
+                            $("#deaths").text(deaths[dates.indexOf(this.category)]);
+                            $("#nobeds").text(noofbeds[dates.indexOf(this.category)]);
+                            $("#popltn").text(popltn[dates.indexOf(this.category)]);
+                            $("#sixtyold").text(sixtyold[dates.indexOf(this.category)]);
+                            $("#seventyold").text(seventyold[dates.indexOf(this.category)])
+                            $("#handwash").text(handwash[dates.indexOf(this.category)]);
+                            $("#maleSmoker").text(maleSmoker[dates.indexOf(this.category)]);
+                            $("#femaleSmoker").text(femaleSmoker[dates.indexOf(this.category)]);
+                            $("#total-cases").text(this.y);
+                            $("#capita").text(capita[dates.indexOf(this.category)]);
+                            $("#string").text(stringInd[dates.indexOf(this.category)]);
+                            $("#diabetes").text(diabetesPre[dates.indexOf(this.category)]);
+                            $("#total-tests").text(totTest[dates.indexOf(this.category)]);
+                            $("#seldate").text(this.category)
                         }
                     }
                 }
@@ -101,29 +134,47 @@ $(function () {
             name: 'Confirmed Cases'
         }]
     });
-    // i = countries.indexOf(selVal)
     $("#selectData").on('change', function(){
         var selVal = $("#selectData option:selected").text();
         console.log(selVal);
         console.log( 'Index : ' + countries.indexOf(selVal) );
         i = countries.indexOf(selVal)
-        dates = [];
-        totCases = [];
-        deaths = [];
-        noofbeds = [];
-        popltn = [];
+        dates = [], totCases = [] , handwash = [], deaths = [], noofbeds = [], popltn = [], sixtyold = [], seventyold = [], maleSmoker =[], 
+        femaleSmoker = [], capita = [], stringInd = [], diabetesPre = [], totTest = [];
         totArr[i].forEach(function(key, value) {
             dates.push(key["date"]);
             totCases.push(parseInt(key["total_cases"]));
             deaths.push(parseInt(key["total_deaths"]));
             noofbeds.push(parseInt(key["hospital_beds_per_100k"]));
             popltn.push(parseInt(key["population"]));
-
+            sixtyold.push(parseInt(key["aged_65_older"]));
+            seventyold.push(parseInt(key["aged_70_older"]));
+            handwash.push(parseInt(key["handwashing_facilities"]));
+            maleSmoker.push(parseInt(key["male_smokers"]));
+            femaleSmoker.push(parseInt(key["female_smokers"]));
+            capita.push(parseInt(key["gdp_per_capita"]));
+            stringInd.push(parseInt(key["stringency_index"]));
+            diabetesPre.push(parseInt(key["diabetes_prevalence"]));
+            totTest.push(parseInt(key["total_tests"]));
         });
         // console.log(deaths[dates.indexOf(this.category)]);
         // console.log(totArr[i]);
         console.log(noofbeds);
         chart2.series[0].setData(totCases);
+        $("#deaths").text(deaths[deaths.length - 1]);
+        $("#nobeds").text(noofbeds[noofbeds.length - 1]);
+        $("#popltn").text(popltn[popltn.length - 1]);
+        $("#sixtyold").text(sixtyold[sixtyold.length - 1]);
+        $("#seventyold").text(seventyold[seventyold.length - 1])
+        $("#handwash").text(handwash[handwash.length - 1]);
+        $("#maleSmoker").text(maleSmoker[maleSmoker.length - 1]);
+        $("#femaleSmoker").text(femaleSmoker[femaleSmoker.length - 1]);
+        $("#total-cases").text(totCases[totCases.length - 1]);
+        $("#capita").text(capita[capita.length - 1]);
+        $("#string").text(stringInd[stringInd.length - 1]);
+        $("#diabetes").text(diabetesPre[diabetesPre.length - 1]);
+        $("#total-tests").text(totTest[totTest.length - 1]);
+        $("#seldate").text(dates[dates.length - 1])
     });
 
 });
