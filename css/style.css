@@ -14,6 +14,7 @@
 
 .rightcol.topright{
     margin: 60px 0 0 0;
+    padding: 170px 0 0 0;
 }
 
 
@@ -33,13 +34,13 @@
 
 .left-pointbox{
    border-radius: 10px;
-   background-color: rgba(0, 0, 0, 0.1);
+   background-color: #EDEDEE;
    padding: 30px 30px 15px 30px;
 }
 
 .rightboxes .point-icon2{
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #EDEDEE;
     padding: 20px 20px 15px 20px;
     margin: 0 0 30px 0;
     display: grid;
@@ -51,6 +52,7 @@
     font-size: 16px;
     line-height: 16px;
     margin: 0 0 5px 0;
+    /* color: #6C6E70; */
 }
 .rightboxes .point-icon2 .number{
     font-size: 26px;
@@ -58,11 +60,13 @@
     margin: 0 0 0 0;
     font-family: 'Rubik', sans-serif;
     font-weight: bold;
+    color: #6C6E70;
 }
 .rightboxes .point-icon3 .point2 .title{
     font-size: 16px;
     line-height: 16px;
     margin: 0 0 5px 0;
+    /* color: #6C6E70; */
 }
 .rightboxes .point-icon3 .point2 .number{
     font-size: 26px;
@@ -70,35 +74,37 @@
     margin: 0 0 0 0;
     font-family: 'Rubik', sans-serif;
     font-weight: bold;
+    color: #6C6E70;
 }
 .rightboxes .point-icon3{
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #EDEDEE;
     padding: 20px 20px 15px 20px;
     margin: 0 0 30px 0;
     display: grid;
     grid-template-columns: 20% 40% 40%;
     column-gap: 10px;
     align-items: center;
+    /* color: #6C6E70; */
+}
+.rightboxes .point-icon3 .number{
+    color: #6C6E70;
 }
 .rightboxes .point-icon4{
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #EDEDEE;
     padding: 20px 20px 15px 20px;
     margin: 0 0 30px 0;
     display: grid;
     grid-template-columns: 50% 50%;
     column-gap: 10px;
     align-items: center;
+
 }
-.rightboxes .point-icon4 .point-icon {
-    display: grid;
-    grid-template-columns: 30% 70%;
-    align-items: center;
-    padding: 0 0 0px 0;
-    border-bottom: 1px solid #ccc;
-    margin: 10px 0 12px 0;
+.rightboxes .point-icon4 .number {
+    color: #6C6E70;
 }
+
 
 .rightboxes .point-icon4  .title {
     font-size: 16px;
@@ -120,6 +126,10 @@
     line-height: 12px;
     margin: 0 0 10px 0;
     border-bottom: 1px solid #ccc;
+    /* color: #6C6E70; */
+}
+.left-pointbox .point .number {
+    color: #6C6E70;
 }
 
 
@@ -206,42 +216,54 @@ box-sizing: border-box;
     color: grey;
 }
 
-@media screen  and (max-width: 767px) {
-
-
-.global-wrap {
-    grid-template-columns: 100%;
-}
-
-.point { margin: 0 0 5px 0;}
-.point .number { margin: 0 0 15px 0; }
-.point-icon { padding: 0 0 5px 0;  margin: 0px 0 5px 0; }
-
-.rightboxes {
-    grid-template-columns: 45% 55%;
-    column-gap: 5px;
-}
-
-.rightboxes .point-icon2 {
-    padding: 17px 16px 15px 10px;
-    margin: 0px 0 5px 0;
-    grid-template-columns: 30% 70%;
+.twocol{
+    display: grid;
+    grid-template-columns: 50% 50%;
     column-gap: 10px;
 }
 
-.rightboxes .point-icon3 {
-    padding: 17px 16px 15px 10px;
-    margin: 0px 0 5px 0;
-}
-.rightboxes .point-icon4 {
-    padding: 17px 16px 15px 10px;
-    margin: 0px 0 5px 0;
-}
+@media screen  and (max-width: 767px) {
 
-.rightcol {
-    margin: 0px 0 0 0;
-}
+    .rightcol.topright {
+        margin: 0 0 0 0;
+        padding: 0 0 0 0;
+    }
 
-#selectData {
-    width: 100%;
+
+    .global-wrap {
+        grid-template-columns: 100%;
+    }
+
+    .point { margin: 0 0 5px 0;}
+    .point .number { margin: 0 0 15px 0; }
+    .point-icon { padding: 0 0 5px 0;  margin: 0px 0 5px 0; }
+
+    .rightboxes {
+        grid-template-columns: 45% 55%;
+        column-gap: 5px;
+    }
+
+    .rightboxes .point-icon2 {
+        padding: 17px 16px 15px 10px;
+        margin: 0px 0 5px 0;
+        grid-template-columns: 30% 70%;
+        column-gap: 10px;
+    }
+
+    .rightboxes .point-icon3 {
+        padding: 17px 16px 15px 10px;
+        margin: 0px 0 5px 0;
+    }
+    .rightboxes .point-icon4 {
+        padding: 17px 16px 15px 10px;
+        margin: 0px 0 5px 0;
+    }
+
+    .rightcol {
+        margin: 0px 0 0 0;
+    }
+
+    #selectData {
+        width: 100%;
+    }
 }
