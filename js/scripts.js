@@ -23,7 +23,7 @@ $(function () {
         'async': false,
         'global': false,
         'dataType': 'json',
-        'url': 'ALLCountriescovid-data.json',
+        'url': 'owid-covid-data.json',
         'success': function(data) {           
             $.each(data, function(index, value){
                 res = data[index][0].location
