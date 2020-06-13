@@ -113,7 +113,7 @@ $(function () {
             renderTo: 'container2',
         },
         title: {
-            text: ''
+            text: 'No. of confirmed cases'
         },
         credits: {enabled: false},
         xAxis: {
