@@ -12,18 +12,19 @@
     box-sizing: border-box;
 }
 
-.rightcol{
-    margin: 30px 0 0 0;
+.rightcol.topright{
+    margin: 60px 0 0 0;
 }
 
 
 #container2{
     width: 100%;
     min-height: 455px;
+    margin-top: 20px;
 }
 
 #selectData{
-    width: 100%;
+    width: 50%;
     text-transform: uppercase;
     padding: 6px 5px;
     background-color: #333333;
@@ -241,4 +242,6 @@ box-sizing: border-box;
     margin: 0px 0 0 0;
 }
 
+#selectData {
+    width: 100%;
 }
