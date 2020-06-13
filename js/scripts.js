@@ -1,7 +1,7 @@
 
 $(function () {
-    var dates = [], totCases = [], canAdd, countries = [], alldata, i, countrycode = {};
-    var totArr = [];
+    var dates = [], totCases = [], canAdd, countries = [], alldata, i, countrycode = {}, deaths =[], popltn = [];
+    var totArr = [], noofbeds = [];
     $.ajax ({
         'async': false,
         'global': false,
@@ -19,16 +19,20 @@ $(function () {
             
             alldata = data;
 
-            totArr[0].forEach(function(key, value) {
+            totArr[1].forEach(function(key, value) {
                 dates.push(key["date"]);
                 totCases.push(parseInt(key["total_cases"]));
+                deaths.push(parseInt(key["total_deaths"]));
+                noofbeds.push(parseInt(key["hospital_beds_per_100k"]));
+                popltn.push(parseInt(key["population"]));
             });
            
-                console.log(data);
+            console.log(data);
+
             if(screen.width <= 767) {
                 stepValue = { step: 10};
             } else {
-                stepValue = { step: 10};  
+                stepValue = { step: 0};  
             }
         }
     
@@ -77,12 +81,27 @@ $(function () {
         categories : dates,
         labels:  stepValue
         },
+        plotOptions: {
+            series: {
+                point: {
+                    events: {
+                        click: function() {
+                            // alert('Category: ' + this.category + ', value: ' + this.y);
+                            console.log(popltn[dates.indexOf(this.category)])
+                            $("p#deaths").text(deaths[dates.indexOf(this.category)]);
+                            $("p#nobeds").text(noofbeds[dates.indexOf(this.category)]);
+                            $("p#popltn").text(popltn[dates.indexOf(this.category)]);
+                        }
+                    }
+                }
+            }
+        },
         series: [{
             data: totCases,
             name: 'Confirmed Cases'
         }]
     });
-    
+    // i = countries.indexOf(selVal)
     $("#selectData").on('change', function(){
         var selVal = $("#selectData option:selected").text();
         console.log(selVal);
@@ -90,12 +109,21 @@ $(function () {
         i = countries.indexOf(selVal)
         dates = [];
         totCases = [];
+        deaths = [];
+        noofbeds = [];
+        popltn = [];
         totArr[i].forEach(function(key, value) {
             dates.push(key["date"]);
             totCases.push(parseInt(key["total_cases"]));
+            deaths.push(parseInt(key["total_deaths"]));
+            noofbeds.push(parseInt(key["hospital_beds_per_100k"]));
+            popltn.push(parseInt(key["population"]));
+
         });
+        // console.log(deaths[dates.indexOf(this.category)]);
         // console.log(totArr[i]);
+        console.log(noofbeds);
         chart2.series[0].setData(totCases);
-        // console.log(dates)
     });
+
 });
