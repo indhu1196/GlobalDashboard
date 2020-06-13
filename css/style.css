@@ -212,4 +212,33 @@ box-sizing: border-box;
     grid-template-columns: 100%;
 }
 
+.point { margin: 0 0 5px 0;}
+.point .number { margin: 0 0 15px 0; }
+.point-icon { padding: 0 0 5px 0;  margin: 0px 0 5px 0; }
+
+.rightboxes {
+    grid-template-columns: 45% 55%;
+    column-gap: 5px;
+}
+
+.rightboxes .point-icon2 {
+    padding: 17px 16px 15px 10px;
+    margin: 0px 0 5px 0;
+    grid-template-columns: 30% 70%;
+    column-gap: 10px;
+}
+
+.rightboxes .point-icon3 {
+    padding: 17px 16px 15px 10px;
+    margin: 0px 0 5px 0;
+}
+.rightboxes .point-icon4 {
+    padding: 17px 16px 15px 10px;
+    margin: 0px 0 5px 0;
+}
+
+.rightcol {
+    margin: 0px 0 0 0;
+}
+
 }
