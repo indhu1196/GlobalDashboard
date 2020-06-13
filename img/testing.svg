@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 53 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-359,-15.7669)">
+        <g id="Artboard5" transform="matrix(1,0,0,0.890095,-0.45122,9.72328)">
+            <rect x="359.451" y="6.79" width="52.292" height="88.867" style="fill:none;"/>
+            <g transform="matrix(0.908458,-0.423427,0.370387,1.00302,364.579,25.7222)">
+                <path d="M23.445,4.5C23.445,2.98 22.215,1.75 20.695,1.75L5.595,1.75C4.075,1.75 2.845,2.98 2.845,4.5L2.845,5.5C2.845,7.02 4.075,8.25 5.595,8.25L6.135,8.25L6.135,58.23C6.135,62.1 9.275,65.25 13.145,65.25C17.015,65.25 20.155,62.1 20.155,58.23L20.155,8.25L20.695,8.25C22.215,8.25 23.445,7.02 23.445,5.5L23.445,4.5ZM18.655,35.21L7.635,35.21L7.635,8.26L18.655,8.26L18.655,35.21Z" style="fill:rgb(0,88,255);fill-rule:nonzero;"/>
+                <circle cx="11.907" cy="23.587" r="2.717" style="fill:rgb(0,88,255);"/>
+                <circle cx="13.145" cy="13.913" r="2.717" style="fill:rgb(0,88,255);"/>
+                <circle cx="11.907" cy="31.459" r="1.787" style="fill:rgb(0,88,255);"/>
+            </g>
+        </g>
+    </g>
+</svg>
