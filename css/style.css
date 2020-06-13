@@ -13,7 +13,7 @@
 }
 
 .rightcol.topright{
-    margin: 30px 0 0 0;
+    margin: 60px 0 0 0;
 }
 
 
@@ -23,7 +23,7 @@
 }
 
 #selectData{
-    width: 100%;
+    width: 50%;
     text-transform: uppercase;
     padding: 6px 5px;
     background-color: #333333;
@@ -241,4 +241,6 @@ box-sizing: border-box;
     margin: 0px 0 0 0;
 }
 
+#selectData {
+    width: 100%;
 }
