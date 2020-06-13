@@ -122,19 +122,19 @@ $(function () {
                     events: {
                         click: function() {
                             // alert('Category: ' + this.category + ', value: ' + this.y);
-                            $("#deaths").text(deaths[dates.indexOf(this.category)]);
-                            $("#nobeds").text(noofbeds[dates.indexOf(this.category)]);
+                            $("#deaths").text(deaths[dates.indexOf(this.category)].toLocaleString());
+                            $("#nobeds").text(noofbeds[dates.indexOf(this.category)].toLocaleString());
                             $("#popltn").text(popltn[dates.indexOf(this.category)].toLocaleString());
-                            $("#sixtyold").text(sixtyold[dates.indexOf(this.category)]);
-                            $("#seventyold").text(seventyold[dates.indexOf(this.category)])
-                            $("#handwash").text(handwash[dates.indexOf(this.category)]);
+                            $("#sixtyold").text(sixtyold[dates.indexOf(this.category)].toLocaleString());
+                            $("#seventyold").text(seventyold[dates.indexOf(this.category)].toLocaleString())
+                            $("#handwash").text(handwash[dates.indexOf(this.category)].toLocaleString());
                             $("#maleSmoker").text(maleSmoker[dates.indexOf(this.category)].toLocaleString());
-                            $("#femaleSmoker").text(femaleSmoker[dates.indexOf(this.category)]);
-                            $("#total-cases").text(this.y);
-                            $("#capita").text(capita[dates.indexOf(this.category)]);
-                            $("#string").text(stringInd[dates.indexOf(this.category)]);
-                            $("#diabetes").text(diabetesPre[dates.indexOf(this.category)]);
-                            $("#total-tests").text(totTest[dates.indexOf(this.category)]);
+                            $("#femaleSmoker").text(femaleSmoker[dates.indexOf(this.category)].toLocaleString());
+                            $("#total-cases").text(this.y.toLocaleString());
+                            $("#capita").text(capita[dates.indexOf(this.category)].toLocaleString());
+                            $("#string").text(stringInd[dates.indexOf(this.category)].toLocaleString());
+                            $("#diabetes").text(diabetesPre[dates.indexOf(this.category)].toLocaleString());
+                            $("#total-tests").text(totTest[dates.indexOf(this.category)].toLocaleString());
                             $("#seldate").text(formatDate(this.category))
                         }
                     }
