@@ -113,7 +113,7 @@ $(function () {
             renderTo: 'container2',
         },
         title: {
-            text: 'Global chart'
+            text: ''
         },
         credits: {enabled: false},
         xAxis: {
