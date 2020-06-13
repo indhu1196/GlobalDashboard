@@ -1,1 +1,206 @@
+.global-wrap{
+    display: grid;
+    grid-template-columns: 65% 35%;
+    font-family: 'Montserrat', sans-serif;
+    column-gap: 20px; 
+    /* width: 100%; */
+    max-width: 1000px;
+    margin: 0 auto;
+}
 
+.leftcol, .rightcol{
+    box-sizing: border-box;
+}
+
+.rightcol{
+    margin: 30px 0 0 0;
+}
+
+
+#container2{
+    width: 100%;
+    min-height: 455px;
+}
+
+#selectData{
+    width: 100%;
+    text-transform: uppercase;
+    padding: 6px 5px;
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+.left-pointbox{
+   border-radius: 10px;
+   background-color: rgba(0, 0, 0, 0.1);
+   padding: 30px 30px 15px 30px;
+}
+
+.rightboxes .point-icon2{
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px 20px 15px 20px;
+    margin: 0 0 30px 0;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    column-gap: 10px;
+    align-items: center;
+}
+.rightboxes .point-icon2 .title{
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0 0 5px 0;
+}
+.rightboxes .point-icon2 .number{
+    font-size: 26px;
+    line-height: 26px;
+    margin: 0 0 0 0;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+}
+.rightboxes .point-icon3 .point2 .title{
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0 0 5px 0;
+}
+.rightboxes .point-icon3 .point2 .number{
+    font-size: 26px;
+    line-height: 26px;
+    margin: 0 0 0 0;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+}
+.rightboxes .point-icon3{
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px 20px 15px 20px;
+    margin: 0 0 30px 0;
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+    column-gap: 10px;
+    align-items: center;
+}
+.rightboxes .point-icon4{
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px 20px 15px 20px;
+    margin: 0 0 30px 0;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 10px;
+    align-items: center;
+}
+.rightboxes .point-icon4 .point-icon {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
+    padding: 0 0 0px 0;
+    border-bottom: 1px solid #ccc;
+    margin: 10px 0 12px 0;
+}
+
+.rightboxes .point-icon4  .title {
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0 0 5px 0 !important;
+}
+
+.padding-bottom0{
+    padding: 0 0 0 0 !important;
+}
+
+
+.point {
+    line-height: 12px;
+    margin: 0 0 30px 0;
+    border-bottom: 1px solid #ccc;
+}
+.left-pointbox .point {
+    line-height: 12px;
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.point .title{
+    font-size: 16px; 
+    line-height: 16px;
+    margin: 0 0 8px 0;   
+}
+.point .number{
+    font-size: 26px; 
+    line-height: 26px; 
+    margin: 0 0 30px 0; 
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+}
+.left-pointbox  .point .number{
+    font-size: 26px; 
+    line-height: 26px; 
+    margin: 5px 0 10px 0; 
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+}
+.point .number sup{
+    font-weight: normal;
+}
+
+.no-border{
+    border-bottom: none !important;
+}
+
+.point-icon {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    align-items: center;
+    padding: 0 0 30px 0;
+    border-bottom: 1px solid #ccc;
+    margin: 0 0 30px 0;
+}
+
+.point-icon .pointcontent{
+    line-height: 10px;
+    height: fit-content;
+}
+.point-icon .pointcontent .title{
+    font-size: 16px; 
+    line-height: 16px;
+    margin: 0 0 8px 0;   
+}
+.point-icon .pointcontent .number{
+    font-size: 26px; 
+    line-height: 26px; 
+    margin: 0 0 0 0;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+}
+.point-icon .pointcontent .number sup{
+    font-weight: normal;
+}
+
+.rightboxes{
+    display: grid;
+grid-template-columns: 47% 47%;
+column-gap: 30px;
+box-sizing: border-box;
+}
+
+/* Colors */
+.total-cases .number {
+    color: #ff8f00;
+}
+.total-cases .number sup{
+    color: grey;
+}
+.total-death .number {
+    color: #F80202;
+}
+.total-death .number sup{
+    color: grey;
+}
+.total-test .number {
+    color: #2ea325;
+}
+.total-test .number sup{
+    color: grey;
+}
