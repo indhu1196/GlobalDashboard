@@ -6,13 +6,12 @@ function formatDate(datestring){
     console.log(day+ ", " + month + " "+ year)
     return day+ ", " + month + " "+ year
 
-    
+
 
 }
 formatDate("2020-06-01")
-
 $(function () {
-    var dates = [], totCases = [],  countries = [], alldata, i, countrycode = {}, deaths =[], popltn = [];
+    var datesDisp = [], dates = [], totCases = [],  countries = [], alldata, i, countrycode = {}, deaths =[], popltn = [];
     var totArr = [], noofbeds = [], handwash = [], sixtyold = [], seventyold = [], maleSmoker = [], femaleSmoker = [], capita = [], 
     stringInd = [], diabetesPre = [], totTest = [];
     $.ajax ({
@@ -33,7 +32,8 @@ $(function () {
             alldata = data;
 
             totArr[1].forEach(function(key, value) {
-                dates.push(key["date"]);
+                dates.push(formatDate(key["date"]));
+                datesDisp.push(key["date"]);
                 totCases.push(parseInt(key["total_cases"]));
                 deaths.push(parseInt(key["total_deaths"]));
                 noofbeds.push(parseInt(key["hospital_beds_per_100k"]));
@@ -63,11 +63,12 @@ $(function () {
             $("#string").text(stringInd[stringInd.length - 1].toLocaleString());
             $("#diabetes").text(diabetesPre[diabetesPre.length - 1].toLocaleString());
             $("#total-tests").text(totTest[totTest.length - 1].toLocaleString());
-            $("#seldate").text(formatDate(dates[dates.length - 1]))
+            $("#seldate").text(formatDate(datesDisp[datesDisp.length - 1]))
+            
             if(screen.width <= 767) {
                 stepValue = { step: 10};
             } else {
-                stepValue = { step: 0};  
+                stepValue = { step: 22};  
             }
         }
     
@@ -111,10 +112,12 @@ $(function () {
         },
         credits: {enabled: false},
         xAxis: {
-        type: 'datetime',
-        tickPixelInterval: 400,
-        categories : dates,
-        labels:  stepValue
+            type: 'datetime',
+            // tickPixelInterval: 400,
+            categories : dates,
+            // min: minDate,
+            // max: maxDate,
+            labels:  stepValue,        
         },
         plotOptions: {
             series: {
@@ -122,9 +125,9 @@ $(function () {
                     events: {
                         click: function() {
                             // alert('Category: ' + this.category + ', value: ' + this.y);
-                            $("#deaths").text(deaths[dates.indexOf(this.category)].toLocaleString());
-                            $("#nobeds").text(noofbeds[dates.indexOf(this.category)].toLocaleString());
-                            $("#popltn").text(popltn[dates.indexOf(this.category)].toLocaleString());
+                            $("#deaths").text(deaths[dates.indexOf(this.category)]);
+                            $("#nobeds").text(noofbeds[dates.indexOf(this.category)]);
+                            $("#popltn").text(popltn[dates.indexOf(this.category)]);
                             $("#sixtyold").text(sixtyold[dates.indexOf(this.category)].toLocaleString());
                             $("#seventyold").text(seventyold[dates.indexOf(this.category)].toLocaleString())
                             $("#handwash").text(handwash[dates.indexOf(this.category)].toLocaleString());
@@ -135,7 +138,7 @@ $(function () {
                             $("#string").text(stringInd[dates.indexOf(this.category)].toLocaleString());
                             $("#diabetes").text(diabetesPre[dates.indexOf(this.category)].toLocaleString());
                             $("#total-tests").text(totTest[dates.indexOf(this.category)].toLocaleString());
-                            $("#seldate").text(formatDate(this.category))
+                            $("#seldate").text(formatDate(datesDisp[dates.indexOf(this.category)]))
                         }
                     }
                 }
@@ -154,8 +157,8 @@ $(function () {
         dates = [], totCases = [] , handwash = [], deaths = [], noofbeds = [], popltn = [], sixtyold = [], seventyold = [], maleSmoker =[], 
         femaleSmoker = [], capita = [], stringInd = [], diabetesPre = [], totTest = [];
         totArr[i].forEach(function(key, value) {
-            
-            dates.push(key["date"]);
+            dates.push(key["date"].slice(5,10));
+            datesDisp.push(key["date"]);
             totCases.push(parseInt(key["total_cases"]));
             deaths.push(parseInt(key["total_deaths"]));
             noofbeds.push(parseInt(key["hospital_beds_per_100k"]));
@@ -172,7 +175,7 @@ $(function () {
         });
         // console.log(deaths[dates.indexOf(this.category)]);
         // console.log(totArr[i]);
-
+        // console.log(noofbeds);
         chart2.series[0].setData(totCases);
         $("#deaths").text(deaths[deaths.length - 1].toLocaleString());
         $("#nobeds").text(noofbeds[noofbeds.length - 1].toLocaleString());
@@ -187,9 +190,7 @@ $(function () {
         $("#string").text(stringInd[stringInd.length - 1].toLocaleString());
         $("#diabetes").text(diabetesPre[diabetesPre.length - 1].toLocaleString());
         $("#total-tests").text(totTest[totTest.length - 1].toLocaleString());
-        $("#seldate").text(formatDate(dates[dates.length - 1]))
-        
-        
-    });
+        $("#seldate").text(formatDate(datesDisp[datesDisp.length - 1]))
+  });
 
 });
