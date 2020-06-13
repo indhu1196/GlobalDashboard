@@ -17,13 +17,17 @@
 }
 
 
-.container2{
+#container2{
     width: 100%;
-
+    min-height: 455px;
 }
 
 #selectData{
     width: 100%;
+    text-transform: uppercase;
+    padding: 6px 5px;
+    background-color: #333333;
+    color: #FFFFFF;
 }
 
 .left-pointbox{
@@ -121,7 +125,7 @@
 .point .title{
     font-size: 16px; 
     line-height: 16px;
-    margin: 0 0 0px 0;   
+    margin: 0 0 8px 0;   
 }
 .point .number{
     font-size: 26px; 
@@ -161,7 +165,7 @@
 .point-icon .pointcontent .title{
     font-size: 16px; 
     line-height: 16px;
-    margin: 0 0 0px 0;   
+    margin: 0 0 8px 0;   
 }
 .point-icon .pointcontent .number{
     font-size: 26px; 
