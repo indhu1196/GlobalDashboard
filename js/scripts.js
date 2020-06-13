@@ -1,3 +1,15 @@
+function formatDate(datestring){
+
+    const date = new Date(datestring)
+    const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' }) 
+    const [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat .formatToParts(date ) 
+    console.log(day+ ", " + month + " "+ year)
+    return day+ ", " + month + " "+ year
+
+    
+
+}
+formatDate("2020-06-01")
 
 $(function () {
     var dates = [], totCases = [],  countries = [], alldata, i, countrycode = {}, deaths =[], popltn = [];
@@ -38,20 +50,20 @@ $(function () {
             });
            
             // console.log(data);
-            $("#deaths").text(deaths[deaths.length - 1]);
-            $("#nobeds").text(noofbeds[noofbeds.length - 1]);
-            $("#popltn").text(popltn[popltn.length - 1]);
-            $("#sixtyold").text(sixtyold[sixtyold.length - 1]);
-            $("#seventyold").text(seventyold[seventyold.length - 1])
-            $("#handwash").text(handwash[handwash.length - 1]);
-            $("#maleSmoker").text(maleSmoker[maleSmoker.length - 1]);
-            $("#femaleSmoker").text(femaleSmoker[femaleSmoker.length - 1]);
-            $("#total-cases").text(totCases[totCases.length - 1]);
-            $("#capita").text(capita[capita.length - 1]);
-            $("#string").text(stringInd[stringInd.length - 1]);
-            $("#diabetes").text(diabetesPre[diabetesPre.length - 1]);
-            $("#total-tests").text(totTest[totTest.length - 1]);
-            $("#seldate").text(dates[dates.length - 1])
+            $("#deaths").text(deaths[deaths.length - 1].toLocaleString());
+            $("#nobeds").text(noofbeds[noofbeds.length - 1].toLocaleString());
+            $("#popltn").text(popltn[popltn.length - 1].toLocaleString());
+            $("#sixtyold").text(sixtyold[sixtyold.length - 1].toLocaleString());
+            $("#seventyold").text(seventyold[seventyold.length - 1].toLocaleString())
+            $("#handwash").text(handwash[handwash.length - 1].toLocaleString());
+            $("#maleSmoker").text(maleSmoker[maleSmoker.length - 1].toLocaleString());
+            $("#femaleSmoker").text(femaleSmoker[femaleSmoker.length - 1].toLocaleString());
+            $("#total-cases").text(totCases[totCases.length - 1].toLocaleString());
+            $("#capita").text(capita[capita.length - 1].toLocaleString());
+            $("#string").text(stringInd[stringInd.length - 1].toLocaleString());
+            $("#diabetes").text(diabetesPre[diabetesPre.length - 1].toLocaleString());
+            $("#total-tests").text(totTest[totTest.length - 1].toLocaleString());
+            $("#seldate").text(formatDate(dates[dates.length - 1]))
             if(screen.width <= 767) {
                 stepValue = { step: 10};
             } else {
@@ -112,18 +124,18 @@ $(function () {
                             // alert('Category: ' + this.category + ', value: ' + this.y);
                             $("#deaths").text(deaths[dates.indexOf(this.category)]);
                             $("#nobeds").text(noofbeds[dates.indexOf(this.category)]);
-                            $("#popltn").text(popltn[dates.indexOf(this.category)]);
+                            $("#popltn").text(popltn[dates.indexOf(this.category)].toLocaleString());
                             $("#sixtyold").text(sixtyold[dates.indexOf(this.category)]);
                             $("#seventyold").text(seventyold[dates.indexOf(this.category)])
                             $("#handwash").text(handwash[dates.indexOf(this.category)]);
-                            $("#maleSmoker").text(maleSmoker[dates.indexOf(this.category)]);
+                            $("#maleSmoker").text(maleSmoker[dates.indexOf(this.category)].toLocaleString());
                             $("#femaleSmoker").text(femaleSmoker[dates.indexOf(this.category)]);
                             $("#total-cases").text(this.y);
                             $("#capita").text(capita[dates.indexOf(this.category)]);
                             $("#string").text(stringInd[dates.indexOf(this.category)]);
                             $("#diabetes").text(diabetesPre[dates.indexOf(this.category)]);
                             $("#total-tests").text(totTest[dates.indexOf(this.category)]);
-                            $("#seldate").text(this.category)
+                            $("#seldate").text(formatDate(this.category))
                         }
                     }
                 }
@@ -142,6 +154,7 @@ $(function () {
         dates = [], totCases = [] , handwash = [], deaths = [], noofbeds = [], popltn = [], sixtyold = [], seventyold = [], maleSmoker =[], 
         femaleSmoker = [], capita = [], stringInd = [], diabetesPre = [], totTest = [];
         totArr[i].forEach(function(key, value) {
+            
             dates.push(key["date"]);
             totCases.push(parseInt(key["total_cases"]));
             deaths.push(parseInt(key["total_deaths"]));
@@ -159,22 +172,24 @@ $(function () {
         });
         // console.log(deaths[dates.indexOf(this.category)]);
         // console.log(totArr[i]);
-        console.log(noofbeds);
+
         chart2.series[0].setData(totCases);
-        $("#deaths").text(deaths[deaths.length - 1]);
-        $("#nobeds").text(noofbeds[noofbeds.length - 1]);
-        $("#popltn").text(popltn[popltn.length - 1]);
-        $("#sixtyold").text(sixtyold[sixtyold.length - 1]);
-        $("#seventyold").text(seventyold[seventyold.length - 1])
-        $("#handwash").text(handwash[handwash.length - 1]);
-        $("#maleSmoker").text(maleSmoker[maleSmoker.length - 1]);
-        $("#femaleSmoker").text(femaleSmoker[femaleSmoker.length - 1]);
-        $("#total-cases").text(totCases[totCases.length - 1]);
-        $("#capita").text(capita[capita.length - 1]);
-        $("#string").text(stringInd[stringInd.length - 1]);
-        $("#diabetes").text(diabetesPre[diabetesPre.length - 1]);
-        $("#total-tests").text(totTest[totTest.length - 1]);
-        $("#seldate").text(dates[dates.length - 1])
+        $("#deaths").text(deaths[deaths.length - 1].toLocaleString());
+        $("#nobeds").text(noofbeds[noofbeds.length - 1].toLocaleString());
+        $("#popltn").text(popltn[popltn.length - 1].toLocaleString());
+        $("#sixtyold").text(sixtyold[sixtyold.length - 1].toLocaleString());
+        $("#seventyold").text(seventyold[seventyold.length - 1].toLocaleString())
+        $("#handwash").text(handwash[handwash.length - 1].toLocaleString());
+        $("#maleSmoker").text(maleSmoker[maleSmoker.length - 1].toLocaleString());
+        $("#femaleSmoker").text(femaleSmoker[femaleSmoker.length - 1].toLocaleString());
+        $("#total-cases").text(totCases[totCases.length - 1].toLocaleString());
+        $("#capita").text(capita[capita.length - 1].toLocaleString());
+        $("#string").text(stringInd[stringInd.length - 1].toLocaleString());
+        $("#diabetes").text(diabetesPre[diabetesPre.length - 1].toLocaleString());
+        $("#total-tests").text(totTest[totTest.length - 1].toLocaleString());
+        $("#seldate").text(formatDate(dates[dates.length - 1]))
+        
+        
     });
 
 });
