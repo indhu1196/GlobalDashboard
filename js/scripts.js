@@ -1,64 +1,47 @@
 
 $(function () {
     var dates = [], totCases = [], canAdd, countries = [], alldata, i, countrycode = {};
-    var IND = [];
-    var shortCodes = ["ABW","AFG","AGO","AIA","ALB","AND","ARE","ARG","ARM","ATG","AUS","AUT","AZE","BDI","BEL","BEN","BES","BFA","BGD","BGR","BHR","BHS","BIH","BLR","BLZ","BMU","BOL","BRA","BRB","BRN","BTN","BWA","CAF","CAN","CHE","CHL","CHN","CIV","CMR","COD","COG","COL","COM","CPV","CRI","CUB","CUW","CYM","CYP","CZE","DEU","DJI","DMA","DNK","DOM","DZA","ECU","EGY","ERI","ESH","ESP","EST","ETH","FIN","FJI","FLK","FRA","FRO","GAB","GBR","GEO","GGY","GHA","GIB","GIN","GMB","GNB","GNQ","GRC","GRD","GRL","GTM","GUM","GUY","HKG","HND","HRV","HTI","HUN","IDN","IMN","IND","IRL","IRN","IRQ","ISL","ISR","ITA","JAM","JEY","JOR","JPN","KAZ","KEN","KGZ","KHM","KNA","KOR","KWT","LAO","LBN","LBR","LBY","LCA","LIE","LKA","LSO","LTU","LUX","LVA","MAR","MCO","MDA","MDG","MDV","MEX","MKD","MLI","MLT","MMR","MNE","MNG","MNP","MOZ","MRT","MSR","MUS","MWI","MYS","NAM","NCL","NER","NGA","NIC","NLD","NOR","NPL","NZL","OMN","OWI", "PAN","PER","PHL","PNG","POL","PRI","PRT","PRY","PSE","PYF","QAT","ROU","RUS","RWA","SAU","SDN","SEN","SGP","SLE","SLV","SMR","SOM","SRB","SSD","STP","SUR","SVK","SVN","SWE","SWZ","SXM","SYC","SYR","TCA","TCD","TGO","THA","TJK","TLS","TTO","TUN","TUR","TWN","TZA","UGA","UKR","URY","USA","UZB","VAT","VCT","VEN","VGB","VIR","VNM","XKX","YEM","ZAF","ZMB", "ZWE"];
-    var ABW = [], AFG = [], AGO = [], AIA = [], ALB = [], AND = [], ARE = [], ARG = [], ARM = [], ATG = [], AUS = [], AUT = [], AZE = [], BDI = [], BEL = [], BEN = [], BES = [], BFA = [], BGD = [], BGR = [], BHR = [], BHS = [], BIH = [], BLR = [], BLZ = [], BMU = [], BOL = [], BRA = [], BRB = [], BRN = [], BTN = [], BWA = [], CAF = [], CAN = [], CHE = [], CHL = [], CHN = [], CIV = [], CMR = [], COD = [], COG = [], COL = [], COM = [], CPV = [], CRI = [], CUB = [], CUW = [], CYM = [], CYP = [], CZE = [], DEU = [], DJI = [], DMA = [], DNK = [], DOM = [], DZA = [], ECU = [], EGY = [], ERI = [], ESH = [], ESP = [], EST = [], ETH = [], FIN = [], FJI = [], FLK = [], FRA = [], FRO = [], GAB = [], GBR = [], GEO = [], GGY = [], GHA = [], GIB = [], GIN = [], GMB = [], GNB = [], GNQ = [], GRC = [], GRD = [], GRL = [], GTM = [], GUM = [], GUY = [], HKG = [], HND = [], HRV = [], HTI = [], HUN = [], IDN = [], IMN = [], IND = [], IRL = [], IRN = [], IRQ = [], ISL = [], ISR = [], ITA = [], JAM = [], JEY = [], JOR = [], JPN = [], KAZ = [], KEN = [], KGZ = [], KHM = [], KNA = [], KOR = [], KWT = [], LAO = [], LBN = [], LBR = [], LBY = [], LCA = [], LIE = [], LKA = [], LSO = [], LTU = [], LUX = [], LVA = [], MAR = [], MCO = [], MDA = [], MDG = [], MDV = [], MEX = [], MKD = [], MLI = [], MLT = [], MMR = [], MNE = [], MNG = [], MNP = [], MOZ = [], MRT = [], MSR = [], MUS = [], MWI = [], MYS = [], NAM = [], NCL = [], NER = [], NGA = [], NIC = [], NLD = [], NOR = [], NPL = [], NZL = [], OMN = [], OWID_WRL = [], PAN = [], PER = [], PHL = [], PNG = [], POL = [], PRI = [], PRT = [], PRY = [], PSE = [], PYF = [], QAT = [], ROU = [], RUS = [], RWA = [], SAU = [], SDN = [], SEN = [], SGP = [], SLE = [], SLV = [], SMR = [], SOM = [], SRB = [], SSD = [], STP = [], SUR = [], SVK = [], SVN = [], SWE = [], SWZ = [], SXM = [], SYC = [], SYR = [], TCA = [], TCD = [], TGO = [], THA = [], TJK = [], TLS = [], TTO = [], TUN = [], TUR = [], TWN = [], TZA = [], UGA = [], UKR = [], URY = [], USA = [], UZB = [], VAT = [], VCT = [], VEN = [], VGB = [], VIR = [], VNM = [], XKX = [], YEM = [], ZAF = [], ZMB = [], ZWE = [];
+    var totArr = [];
     $.ajax ({
         'async': false,
         'global': false,
         'dataType': 'json',
         'url': 'ALLCountriescovid-data.json',
-        'success': function(data) {
+        'success': function(data) {           
             $.each(data, function(index, value){
                 res = data[index][0].location
                 countries.push(res);
             });
-            console.log(countries);
+            $.each(data, function(index, value){
+                res = data[index]
+                totArr.push(res);
+            });
             
             alldata = data;
-            // for(i = 0; i < shortCodes.length; i++ ) {
-            //     canAdd = data.shortCodes[i];
-            // }
-            
-             // var res = canAdd;
-            canAdd = data.IND;            
-            var res = canAdd;
-            
-            res.forEach(function(key, value) {
+
+            totArr[0].forEach(function(key, value) {
                 dates.push(key["date"]);
                 totCases.push(parseInt(key["total_cases"]));
             });
+           
                 console.log(data);
             if(screen.width <= 767) {
                 stepValue = { step: 10};
             } else {
-                stepValue = { step: 20};  
+                stepValue = { step: 10};  
             }
         }
     
     });
 
-    var selectSpecCountry = _.filter(alldata, function(obj){
-        // console.log("obj", obj);
-        return obj[0]["location"] === "Aruba"
-    })
-
 
     for (var item in alldata) {
-
-        // console.log("item", item);
-
-        // console.log("itemdata", alldata[item][0]["location"])
-
-        countrycode[alldata[item][0]["location"]] = item
-        
+        countrycode[alldata[item][0]["location"]] = item        
       }
 
-    // // console.log("alldata", alldata);
-    // console.log("selectSpecCountry", selectSpecCountry[0]);
-    // console.log("countrycode", countrycode["Aruba"]);
-    // console.log("countries", countries);
+    var selectSpecCountry = _.filter(alldata, function(obj){
+        return obj[0]["location"] === "Aruba"
+    })
 
     //create the dropdown from data
     var select = d3.select("#selectData")
@@ -99,16 +82,20 @@ $(function () {
             name: 'Confirmed Cases'
         }]
     });
-    // The select action
+    
     $("#selectData").on('change', function(){
-        var selVal = $("#selectData").val();
-        if(selVal == "ABW" || selVal == '') {
-            
-            chart2.series[0].setData();
-        }
-        else if (selVal == "IND") {
-            canAdd = data.IND
-        }
-    });    
-
+        var selVal = $("#selectData option:selected").text();
+        console.log(selVal);
+        console.log( 'Index : ' + countries.indexOf(selVal) );
+        i = countries.indexOf(selVal)
+        dates = [];
+        totCases = [];
+        totArr[i].forEach(function(key, value) {
+            dates.push(key["date"]);
+            totCases.push(parseInt(key["total_cases"]));
+        });
+        // console.log(totArr[i]);
+        chart2.series[0].setData(totCases);
+        // console.log(dates)
+    });
 });
