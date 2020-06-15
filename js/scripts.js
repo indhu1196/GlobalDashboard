@@ -23,7 +23,7 @@ $(function () {
         'async': false,
         'global': false,
         'dataType': 'json',
-        'url': 'owid-covid-data.json',
+        'url': 'https://thefederal.com/api/scraper.php?m=Corona&t=globalDashboard',
         'success': function(data) {           
             $.each(data, function(index, value){
                 res = data[index][0].location
@@ -36,12 +36,51 @@ $(function () {
             
             alldata = data;
 
-            totArr[1].forEach(function(key, value) {
+            totArr[90].forEach(function(key, value) { 
+                if(key["hospital_beds_per_thousand"] === undefined) {
+                   key["hospital_beds_per_thousand"] = 0;
+                }
+                if(key["total_cases"] === undefined) {
+                   key["total_cases"] = 0;
+                }
+                if(key["total_deaths"] === undefined) {
+                   key["total_deaths"] = 0;
+                }
+                if(key["population"] === undefined) {
+                   key["population"] = 0;
+                }
+                if(key["aged_65_older"] === undefined) {
+                   key["aged_65_older"] = 0;
+                }
+                if(key["aged_70_older"] === undefined) {
+                   key["aged_70_older"] = 0;
+                }
+                if(key["handwashing_facilities"] === undefined) {
+                   key["handwashing_facilities"] = 0;
+                }
+                if(key["male_smokers"] === undefined) {
+                   key["male_smokers"] = 0;
+                }
+                if(key["female_smokers"] === undefined) {
+                   key["female_smokers"] = 0;
+                }
+                if(key["gdp_per_capita"] === undefined) {
+                   key["gdp_per_capita"] = 0;
+                }
+                if(key["stringency_index"] === undefined) {
+                   key["stringency_index"] = 0;
+                }
+                if(key["diabetes_prevalence"] === undefined) {
+                   key["diabetes_prevalence"] = 0;
+                }
+                 if(key["total_tests"] === undefined) {
+                   key["total_tests"] = 0;
+                }
                 dates.push(formatDate(key["date"]));
                 // datesDisp.push(formatDate(key["date"]));
                 totCases.push(parseInt(key["total_cases"]));
                 deaths.push(parseInt(key["total_deaths"]));
-                noofbeds.push(parseInt(key["hospital_beds_per_100k"]));
+                noofbeds.push(parseInt(key["hospital_beds_per_thousand"]));
                 popltn.push(parseInt(key["population"]));
                 sixtyold.push(parseInt(key["aged_65_older"]));
                 seventyold.push(parseInt(key["aged_70_older"]));
@@ -95,7 +134,11 @@ $(function () {
             .data(countries).enter()
             .append('option')
             .attr("value", function (d) { 
-                    return countrycode[d]; 
+                    //return countrycode[d]; 
+                   return d;
+                })
+            .attr("data-cy", function (d) { 
+                    return d; 
                 })
             .attr("selected", function (d) { 
                     if(d === "India"){
@@ -105,7 +148,7 @@ $(function () {
             })
             .text(function(d){
                 // console.log(d);
-                return d
+                return d;
             })
 
     var chart2 = new Highcharts.Chart({
@@ -155,18 +198,60 @@ $(function () {
         }]
     });
     $("#selectData").on('change', function(){
-        var selVal = $("#selectData option:selected").text();
+       loadSelectData();
+  });
+  function loadSelectData() {
+	  var selVal = $("#selectData option:selected").attr('data-cy');
         // console.log(selVal);
         // console.log( 'Index : ' + countries.indexOf(selVal) );
         i = countries.indexOf(selVal)
         dates = [], totCases = [] , handwash = [], deaths = [], noofbeds = [], popltn = [], sixtyold = [], seventyold = [], maleSmoker =[], 
         femaleSmoker = [], capita = [], stringInd = [], diabetesPre = [], totTest = [];
         totArr[i].forEach(function(key, value) {
+            if(key["hospital_beds_per_thousand"] === undefined) {
+                   key["hospital_beds_per_thousand"] = 0;
+                }
+                if(key["total_cases"] === undefined) {
+                   key["total_cases"] = 0;
+                }
+                if(key["total_deaths"] === undefined) {
+                   key["total_deaths"] = 0;
+                }
+                if(key["population"] === undefined) {
+                   key["population"] = 0;
+                }
+                if(key["aged_65_older"] === undefined) {
+                   key["aged_65_older"] = 0;
+                }
+                if(key["aged_70_older"] === undefined) {
+                   key["aged_70_older"] = 0;
+                }
+                if(key["handwashing_facilities"] === undefined) {
+                   key["handwashing_facilities"] = 0;
+                }
+                if(key["male_smokers"] === undefined) {
+                   key["male_smokers"] = 0;
+                }
+                if(key["female_smokers"] === undefined) {
+                   key["female_smokers"] = 0;
+                }
+                if(key["gdp_per_capita"] === undefined) {
+                   key["gdp_per_capita"] = 0;
+                }
+                if(key["stringency_index"] === undefined) {
+                   key["stringency_index"] = 0;
+                }
+                if(key["diabetes_prevalence"] === undefined) {
+                   key["diabetes_prevalence"] = 0;
+                }
+                 if(key["total_tests"] === undefined) {
+                   key["total_tests"] = 0;
+                }
             dates.push(formatDate(key["date"]));
             // datesDisp.push(key["date"]);
             totCases.push(parseInt(key["total_cases"]));
             deaths.push(parseInt(key["total_deaths"]));
-            noofbeds.push(parseInt(key["hospital_beds_per_100k"]));
+            noofbeds.push(parseInt(key["hospital_beds_per_thousand"]));
             popltn.push(parseInt(key["population"]));
             sixtyold.push(parseInt(key["aged_65_older"]));
             seventyold.push(parseInt(key["aged_70_older"]));
@@ -196,6 +281,13 @@ $(function () {
         $("#diabetes").text((diabetesPre[diabetesPre.length - 1]).toLocaleString());
         $("#total-tests").text((totTest[totTest.length - 1]).toLocaleString());
         $("#seldate").text(formatDate(dates[dates.length - 1]))
-  });
+  }
+   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+$('#selectData').mobileSelect({				
+				onClose: function(){
+					loadSelectData();
+				}
+			});
+}
 
 });
