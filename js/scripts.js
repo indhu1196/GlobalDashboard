@@ -97,8 +97,8 @@ $(function () {
             $("#deaths").text((deaths[deaths.length - 1]).toLocaleString());
             $("#nobeds").text((noofbeds[noofbeds.length - 1]).toLocaleString());
             $("#popltn").text((popltn[popltn.length - 1]).toLocaleString());
-            $("#sixtyold").text((sixtyold[sixtyold.length - 1]).toLocaleString());
-            $("#seventyold").text((seventyold[seventyold.length - 1]).toLocaleString())
+            $("#sixtyold").text((sixtyold[sixtyold.length - 1]).toLocaleString()+'%');
+            $("#seventyold").text((seventyold[seventyold.length - 1]).toLocaleString()+'%')
             $("#handwash").text((handwash[handwash.length - 1]).toLocaleString());
             $("#maleSmoker").text((maleSmoker[maleSmoker.length - 1]).toLocaleString());
             $("#femaleSmoker").text((femaleSmoker[femaleSmoker.length - 1]).toLocaleString());
@@ -270,8 +270,8 @@ $(function () {
         $("#deaths").text((deaths[deaths.length - 1]).toLocaleString());
         $("#nobeds").text((noofbeds[noofbeds.length - 1]).toLocaleString());
         $("#popltn").text((popltn[popltn.length - 1]).toLocaleString());
-        $("#sixtyold").text((sixtyold[sixtyold.length - 1]).toLocaleString());
-        $("#seventyold").text((seventyold[seventyold.length - 1]).toLocaleString())
+        $("#sixtyold").text((sixtyold[sixtyold.length - 1]).toLocaleString()+'%');
+        $("#seventyold").text((seventyold[seventyold.length - 1]).toLocaleString()+'%')
         $("#handwash").text((handwash[handwash.length - 1]).toLocaleString());
         $("#maleSmoker").text((maleSmoker[maleSmoker.length - 1]).toLocaleString());
         $("#femaleSmoker").text((femaleSmoker[femaleSmoker.length - 1]).toLocaleString());
